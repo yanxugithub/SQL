@@ -1,0 +1,11 @@
+running count
+
+similar to running total, you can get running count that count # of rows for each row
+
+
+select column, count(count column) over (order by column to order by asc) as runningTotal
+from 
+table
+
+
+*Count column is the the column that is counted for each row.

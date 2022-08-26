@@ -1,0 +1,24 @@
+A running total is the summation of a sequence of numbers which is updated each time a new number is added to the sequence, by adding the value of the new number to the previous running total.
+
+
+A running total is the cumulative sum of a value and all previous values in the column.
+
+
+Running Total Calculation in SQL
+
+In SQL, the running total is calculated with the help of window functions.
+
+SELECT 
+    columns...,
+    SUM(column to sum) OVER(ORDER BY date) AS running_total
+FROM table
+
+Inside Over, don't use partition by because we don't need to partition the totals. The total partitioned is not the running total.
+
+SELECT
+      date,
+      plan,
+      SUM(plan) OVER(order by Date) AS plan_running_total,
+      realization,
+      SUM(realization) OVER(order by Date) AS realization_running_total
+FROM sales;
